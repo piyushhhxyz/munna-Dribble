@@ -120,6 +120,7 @@ const Login = async (req, res) => {
             expires.setDate(expires.getDate() + 7)
             const token = createToken(user._id.toString(), user.email, "7d")
 
+            console.log(COOKIE_NAME)
             res.cookie(COOKIE_NAME, token, {
                 path: "/", expires,
                 signed: true,
