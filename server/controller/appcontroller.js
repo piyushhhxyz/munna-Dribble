@@ -109,7 +109,7 @@ const Login = async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
         const isPasswordMatch = await bcrypt.compare(password, user.password);
-        if (!user) {
+        if (!user.email) {
             errorMessage = 'User not found';
             return res.send({ error: errorMessage });
         } else if (!isPasswordMatch) {
@@ -119,7 +119,7 @@ const Login = async (req, res) => {
             const expires = new Date();
             expires.setDate(expires.getDate() + 7)
             const token = createToken(user._id.toString(), user.email, "7d")
-            console.log(token);
+
             res.cookie(COOKIE_NAME, token, {
                 path: "/", expires,
                 signed: true,
