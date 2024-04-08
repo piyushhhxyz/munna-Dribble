@@ -187,7 +187,7 @@ const emailVerify = async (id) => {
         to: user.email,
         subject: 'Dribbble email verification',
         html: `<p>Hello ${user.name}, verify your email by clicking this link...</p>
-        <a href='http://localhost:3000/emailverify?emailToken=${user.emailToken}'>http://localhost:3000/emailverify?emailToken=${user.emailToken}</a>`
+        <a href='https://dribbblev3.netlify.app/emailverify?emailToken=${user.emailToken}'>https://dribbblev3.netlify.app/emailverify?emailToken=${user.emailToken}</a>`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
